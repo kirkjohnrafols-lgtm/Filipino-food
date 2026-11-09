@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dishes Rich With Culture and Flavor : The Philippine's Cuisines</title>
+  <style>
+    :root {
+      --card-bg: #ffffff;
+      --accent-color: #d90429;
+      --text-color: #2b2d42;
+      --bamboo-gold: #c68b59;
+      --wood-dark: #3e2723;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      /* Full visibility background image */
+      background-image: url('https://i.pinimg.com/736x/9e/5a/b8/9e5ab8c4d81d8c357b6b3793d830ac9e.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--text-color);
+      margin: 0;
+      padding: 2rem 4rem;
+      position: relative;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    /* Left & Right Decorative Bamboo Borders */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 24px;
+      z-index: 10;
+      pointer-events: none;
+      background: 
+        repeating-linear-gradient(
+          to bottom,
+          #6b8e23 0px,
+          #6b8e23 80px,
+          #3b5212 83px,
+          #8fbc8f 86px,
+          #6b8e23 90px
+        );
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.4), 0 0 10px rgba(0,0,0,0.25);
+      border-radius: 4px;
+    }
+
+    body::before {
+      left: 10px;
+    }
+
+    body::after {
+      right: 10px;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.6rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    /* Ethnic Underline Accent */
+    h1::after {
+      content: "❖ ─── 🏮 ─── ❖";
+      display: block;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      color: var(--bamboo-gold);
+      letter-spacing: 4px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
+
+    /* Windowed Grid Layout */
+    .dish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Dish Window Cards */
+    .dish-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e0d5c1;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+    }
+
+    .dish-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .dish-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--bamboo-gold);
+    }
+
+    .dish-info {
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .dish-info h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.4rem;
+      color: var(--wood-dark);
+    }
+
+    .dish-info p {
+      margin: 0 0 0.8rem 0;
+      color: #5c6269;
+      font-size: 0.95rem;
+    }
+
+    .behind-show-tag {
+      display: inline-block;
+      background: #f4ede2;
+      border: 1px solid #d9ccb9;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #5d4037;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    /* Ripped Paper Quote Banner at Bottom */
+    .ripped-quote-container {
+      margin-top: 4rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ripped-paper {
+      background: #fdfbf7;
+      color: #3d2b1f;
+      padding: 2.5rem 2rem;
+      max-width: 800px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border-left: 2px dashed #c2b299;
+      border-right: 2px dashed #c2b299;
+      /* Jagged / ripped paper edges on top and bottom */
+      clip-path: polygon(
+        0% 12px, 4% 0px, 8% 10px, 12% 2px, 16% 14px, 20% 4px, 24% 12px, 28% 2px, 32% 14px, 36% 4px, 40% 10px, 44% 2px, 48% 12px, 52% 0px, 56% 14px, 60% 4px, 64% 12px, 68% 2px, 72% 14px, 76% 2px, 80% 12px, 84% 4px, 88% 14px, 92% 2px, 96% 10px, 100% 0px,
+        100% calc(100% - 12px), 96% 100%, 92% calc(100% - 10px), 88% calc(100% - 2px), 84% calc(100% - 14px), 80% calc(100% - 4px), 76% calc(100% - 12px), 72% calc(100% - 2px), 68% calc(100% - 14px), 64% calc(100% - 4px), 60% calc(100% - 10px), 56% calc(100% - 2px), 52% calc(100% - 12px), 48% 100%, 44% calc(100% - 14px), 40% calc(100% - 4px), 36% calc(100% - 12px), 32% calc(100% - 2px), 28% calc(100% - 14px), 24% calc(100% - 2px), 20% calc(100% - 12px), 16% calc(100% - 4px), 12% calc(100% - 14px), 8% calc(100% - 2px), 4% calc(100% - 10px), 0% 100%
+      );
+    }
+
+    .ripped-paper blockquote {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      font-style: italic;
+      color: #4a3525;
+    }
+
+    .ripped-paper cite {
+      display: block;
+      margin-top: 1rem;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-color);
+    }
+
+    /* Zoomed-In Modal View */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1000;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 18px;
+      border: 4px solid var(--bamboo-gold);
+      max-width: 650px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      transform: scale(0.7);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #8d6e63;
+      border: none;
+      background: none;
+    }
+
+    .close-btn:hover {
+      color: var(--wood-dark);
+    }
+
+    .modal-header img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      border: 2px solid var(--bamboo-gold);
+    }
+
+    .behind-story-box {
+      background: #fff8f0;
+      border-left: 5px solid var(--accent-color);
+      padding: 12px 18px;
+      margin: 1rem 0;
+      border-radius: 0 10px 10px 0;
+      font-size: 0.95rem;
+      color: var(--wood-dark);
+    }
+
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+
+    .nutrition-table td, .nutrition-table th {
+      border: 1px solid #e0d5c1;
+      padding: 8px;
+      font-size: 0.9rem;
+    }
+
+    .nutrition-table th {
+      background-color: #f4ede2;
+      color: var(--wood-dark);
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      body::before, body::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Dishes Rich With Culture and Flavor : The Philippine's Cuisines</h1>
+
+    <div class="dish-grid" id="dishGrid"></div>
+
+    <!-- Ripped Paper Quote Section -->
+ <div class="ripped-quote-container">
+  <div class="ripped-paper">
+    <blockquote>
+      "Food is not just sustenance; it is culture, history, and identity served on a plate. Understanding Filipino food means understanding the Filipino heart."
+    </blockquote>
+    <cite>— Doreen Gamboa Fernandez, Food Historian</cite>
+  </div>
+</div>
+
+  <!-- Zoom Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <button class="close-btn" id="closeBtn">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const dishes = [
+      {
+        id: "adobo",
+        name: "Chicken Adobo",
+        tagline: "Savory, tangy braised chicken in soy and vinegar",
+        behindStory: "Long before refrigeration, Filipinos used vinegar and salt to naturally preserve meat in the tropical heat. This preservation technique evolved into the national comfort food we love today.",
+        image: "https://i.pinimg.com/1200x/c4/df/c7/c4dfc757f28a29d8d599331cf05d60b5.jpg",
+        ingredients: [
+          "1 kg chicken thighs/drumsticks",
+          "1/2 cup soy sauce",
+          "1/3 cup cane vinegar",
+          "6 cloves garlic (crushed)",
+          "1 tsp whole black peppercorns",
+          "3 dried bay leaves"
+        ],
+        preparation: "Marinate chicken in soy sauce and garlic for 30 mins. Simmer in a pot with bay leaves and peppercorns for 20 mins. Add vinegar and simmer uncovered for 10 mins until sauce thickens.",
+        values: { calories: "340 kcal", protein: "28g", fat: "18g", carbs: "6g" }
+      },
+      {
+        id: "sinigang",
+        name: "Sinigang na Baboy",
+        tagline: "Sour and savory tamarind pork soup",
+        behindStory: "Sinigang reflects the Filipino palate's deep appreciation for sour notes, which originally came from native sour fruits like tamarind, bilimbi (kamias), or guava before commercial soup bases existed.",
+        image: "https://i.pinimg.com/736x/c3/2f/08/c32f0879160b9fdf0ab68262f9df56f3.jpg",
+        ingredients: [
+          "1 kg pork belly or ribs",
+          "1 pack tamarind soup base",
+          "1 bunch water spinach (kangkong)",
+          "1 medium radish (sliced)",
+          "2 tomatoes (quartered)",
+          "1 eggplant (sliced)"
+        ],
+        preparation: "Boil pork belly with tomatoes until tender. Add tamarind base and radish. Stir in eggplant and long green chillies. Add kangkong last and turn off heat.",
+        values: { calories: "410 kcal", protein: "22g", fat: "31g", carbs: "12g" }
+      },
+      {
+        id: "kare-kare",
+        name: "Kare-Kare",
+        tagline: "Rich peanut stew with oxtail and vegetables",
+        behindStory: "Believed by historians to have roots connected to the Sepoy troops from India who stayed in Rizal during the British occupation of Manila, adapting local ingredients like peanuts and oxtail.",
+        image: "https://i.pinimg.com/236x/a3/20/0b/a3200bcc0560e025decdedf98e89be52.jpg",
+        ingredients: [
+          "1 kg oxtail / tripe",
+          "1/2 cup peanut butter",
+          "1/4 cup ground toasted rice",
+          "Annatto seeds (for color)",
+          "Banana blossom, eggplant, string beans",
+          "Bagoong (shrimp paste) for serving"
+        ],
+        preparation: "Simmer oxtail until tender. Add annatto water for color, peanut butter, and toasted rice powder to thicken. Add vegetables during the last 5 minutes. Serve with shrimp paste.",
+        values: { calories: "520 kcal", protein: "35g", fat: "38g", carbs: "15g" }
+      },
+      {
+        id: "tinola",
+        name: "Chicken Tinola",
+        tagline: "Warm and soothing ginger chicken soup",
+        behindStory: "Tinola is a traditional comforting broth dish centered around ginger, garlic, and fish sauce. Historically enjoyed during rainy days or recovery, it is celebrated for its healing warmth and simple, clean flavors.",
+        image: "https://i.pinimg.com/1200x/43/be/18/43be1881991cbac11730a8dc72391d27.jpg",
+        ingredients: [
+          "500g chicken pieces (bone-in)",
+          "1 thumb-sized ginger (julienned)",
+          "3 cloves garlic (minced)",
+          "1 small onion (chopped)",
+          "1 cup green papaya or chayote squash chunks",
+          "1 bunch chili leaves or malunggay (moringa)"
+        ],
+        preparation: "Sauté garlic, onion, and ginger until fragrant. Add chicken pieces and cook until color changes. Pour in water or rice wash, bring to a boil, then simmer until tender. Add green papaya and finish with chili leaves.",
+        values: { calories: "260 kcal", protein: "24g", fat: "10g", carbs: "8g" }
+      },
+      {
+        id: "bicol-express",
+        name: "Bicol Express",
+        tagline: "Fiery, creamy pork stew simmered in coconut milk and chillies",
+        behindStory: "Originating from the Bicol region—known for its abundant coconut palms and fiery palate—this dish gets its signature punch from generous amounts of native bird's eye chillies balanced by rich coconut cream.",
+        image: "https://i.pinimg.com/736x/3c/6d/40/3c6d40ebc13740aed1e50c29a0d51f03.jpg",
+        ingredients: [
+          "500g pork belly, cubed",
+          "2 cups coconut milk",
+          "1 cup coconut cream",
+          "4 cloves garlic, minced",
+          "1 onion, chopped",
+          "2 tbsp shrimp paste (bagoong alamang)",
+          "Bird's eye chillies (siling labuyo) and finger chillies"
+        ],
+        preparation: "Sauté garlic, onion, and shrimp paste. Add pork belly cubes and sear until browned. Pour in coconut milk, bring to a boil, and simmer until the pork is tender. Stir in coconut cream and sliced chillies, cooking until the sauce reduces and thickens.",
+        values: { calories: "450 kcal", protein: "20g", fat: "38g", carbs: "5g" }
+      },
+      {
+        id: "lumpia",
+        name: "Lumpiang Shanghai",
+        tagline: "Crispy fried spring rolls filled with seasoned pork",
+        behindStory: "Inspired by Chinese spring rolls brought by early traders, Filipinos localized the recipe by using minced pork, wrapping them thinner, and serving them at every single family celebration or fiesta.",
+        image: "https://i.pinimg.com/1200x/6d/a9/a3/6da9a3b6ea9125107ab46d077f1ecc18.jpg",
+        ingredients: [
+          "500g ground pork",
+          "1 carrot (finely minced)",
+          "1 onion (minced)",
+          "Spring roll wrappers",
+          "Salt and pepper",
+          "Sweet chili sauce for dipping"
+        ],
+        preparation: "Mix ground pork, carrots, onions, and seasonings together. Roll spoonfuls tightly inside spring roll wrappers, seal edges with water, and fry until golden brown and crispy.",
+        values: { calories: "290 kcal", protein: "14g", fat: "20g", carbs: "12g" }
+      },
+      {
+        id: "halo-halo",
+        name: "Halo-Halo",
+        tagline: "The ultimate shaved ice dessert with mixed sweets",
+        behindStory: "A delicious product of cultural blending, halo-halo ('mix-mix') evolved from a pre-war Japanese dessert called kakigori or monggo gohan, to which resourceful Filipinos added sweetened local fruits, leche flan, and ube.",
+        image: "https://i.pinimg.com/736x/0b/3d/ec/0b3dec16069b2df301ebe7e30db79507.jpg",
+        ingredients: [
+          "Shaved ice",
+          "Evaporated milk",
+          "Sweetened kidney beans and chickpeas",
+          "Nata de coco and palm fruit (kaong)",
+          "Leche flan and ube halaya slices",
+          "A scoop of ube ice cream on top"
+        ],
+        preparation: "Layer the sweet beans, fruits, and jellies at the bottom of a tall glass. Fill with finely shaved ice, drizzle generously with milk, and top with leche flan and ube ice cream. Mix thoroughly before eating!",
+        values: { calories: "380 kcal", protein: "6g", fat: "8g", carbs: "71g" }
+      },
+      {
+        id: "kaldereta",
+        name: "Beef Kaldereta",
+        tagline: "Hearty beef stew with tomato sauce, liver spread, and vegetables",
+        behindStory: "Influenced by Spanish colonial cuisine (from 'caldero' meaning cauldron), Kaldereta is a celebratory dish traditionally made with goat meat or beef, enriched with liver paste and bell peppers for depth.",
+        image: "https://i.pinimg.com/736x/0c/79/eb/0c79ebc362e9a1a87f4b4d82c72d501e.jpg",
+        ingredients: [
+          "1 kg beef chuck, cubed",
+          "1 cup tomato sauce",
+          "1/2 cup liver spread",
+          "2 potatoes, cubed",
+          "1 carrot, cubed",
+          "1 red bell pepper, sliced",
+          "1/2 cup green olives"
+        ],
+        preparation: "Sear beef cubes until browned. Sauté garlic and onions, add beef, tomato sauce, and water. Simmer until beef is tender. Stir in liver spread, potatoes, carrots, and bell peppers until cooked through.",
+        values: { calories: "480 kcal", protein: "32g", fat: "28g", carbs: "18g" }
+      },
+      {
+        id: "lechon",
+        name: "Lechon",
+        tagline: "Crispy-skinned whole roasted pig seasoned with aromatic herbs",
+        behindStory: "Considered the centerpiece of any major Filipino celebration, Lechon was introduced during Spanish rule but mastered locally using lemongrass, garlic, and bay leaves stuffed inside, slow-roasted over charcoal.",
+        image: "https://i.pinimg.com/1200x/5b/b8/22/5bb822f9516d912e201e1b3ab8504d6f.jpg",
+        ingredients: [
+          "Whole pig (or pork belly roast for home preparation)",
+          "Lemongrass stalks",
+          "Garlic bulbs, crushed",
+          "Bay leaves",
+          "Black peppercorns",
+          "Rock salt for seasoning"
+        ],
+        preparation: "Clean and stuff meat with lemongrass, garlic, bay leaves, and spices. Sew tightly and coat skin with oil and salt. Slow-roast over charcoal pit while turning continuously until skin turns golden red and blistered.",
+        values: { calories: "550 kcal", protein: "30g", fat: "42g", carbs: "0g" }
+      }
+    ];
+
+    const grid = document.getElementById('dishGrid');
+    const modal = document.getElementById('modalOverlay');
+    const modalBody = document.getElementById('modalBody');
+    const closeBtn = document.getElementById('closeBtn');
+
+    // Render Cards
+    dishes.forEach(dish => {
+      const card = document.createElement('div');
+      card.className = 'dish-card';
+      card.innerHTML = `
+        <img src="${dish.image}" alt="${dish.name}">
+        <div class="dish-info">
+          <h3>${dish.name}</h3>
+          <p>${dish.tagline}</p>
+          <span class="behind-show-tag">📖 Show Behind It</span>
+        </div>
+      `;
+      card.addEventListener('click', () => openModal(dish));
+      grid.appendChild(card);
+    });
+
+    // Zoom Modal Logic
+    function openModal(dish) {
+      modalBody.innerHTML = `
+        <div class="modal-header">
+          <img src="${dish.image}" alt="${dish.name}">
+          <h2>${dish.name}</h2>
+        </div>
+        
+        <div class="behind-story-box">
+          <strong>The Story Behind It:</strong> ${dish.behindStory}
+        </div>
+
+        <h4>Ingredients</h4>
+        <ul>
+          ${dish.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+        </ul>
+        <h4>Preparation</h4>
+        <p>${dish.preparation}</p>
+        <h4>Nutritional Values (Per Serving)</h4>
+        <table class="nutrition-table">
+          <tr><th>Calories</th><td>${dish.values.calories}</td></tr>
+          <tr><th>Protein</th><td>${dish.values.protein}</td></tr>
+          <tr><th>Fat</th><td>${dish.values.fat}</td></tr>
+          <tr><th>Carbs</th><td>${dish.values.carbs}</td></tr>
+        </table>
+      `;
+      modal.classList.add('active');
+    }
+
+    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
